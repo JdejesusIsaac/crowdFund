@@ -31,6 +31,9 @@ Ganache or another Ethereum client
 
 2. Install the dependencies:  run:  npm install
 
+yarn add --dev hardhat @nomiclabs/hardhat-ethers@npm:hardhat-deploy-ethers ethers
+
+
 
 # Deployment
 
