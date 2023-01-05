@@ -29,7 +29,7 @@ Ganache or another Ethereum client
 
 1. Clone the repository: git clone https://github.com/YOUR_USERNAME/CrowdFund01.git
 
-2. Install the dependencies:  run:  npm install
+2. Install the dependencies:   npm install
 
 
 # Verified Contract 
