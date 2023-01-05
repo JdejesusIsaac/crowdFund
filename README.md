@@ -39,10 +39,11 @@ https://goerli.etherscan.io/address/0xbba96da3000ece87c141f955d1d09a7a3f528dd6#c
 
 # Deployment
 
-1. In the root directory of the project, the following command to compile. run:   yarn hardhat compile
+1. In the root directory of the project, the following command to compile. run:   
 
 2. Deploy contract to goerli. To launch a new campaign with a goal of 0.1 Uniswap tokens. To pledge token amount to a new campaign with 0.1 Uni Tokens:
  ```node.js 
+ yarn hardhat compile
  
 yarn add --dev hardhat @nomiclabs/hardhat-ethers@npm:hardhat-deploy-ethers ethers
 
