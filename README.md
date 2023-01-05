@@ -1,5 +1,5 @@
 # crowdFund
-crowdfunding Smartcontract:  A creator can launch a new campaign by specifying a goal amount in token.s. 
+A smart contract for a crowdfunding platform on Ethereum. 
 
 
 # Features
