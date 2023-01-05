@@ -34,14 +34,14 @@ Ganache or another Ethereum client
 
 # Deployment
 
-1. In the root directory of the project, the following command to compile. run:  yarn hardhat compile
+1. In the root directory of the project, the following command to compile. run:   yarn hardhat compile
 
 2. Deploy contract to goerli. run: yarn hardhat deploy --network goerli 
 
 
-3. to launch a new campaign with a goal of 0.1 Uniswap tokens: npx hardhat run --network goerli  scripts/launch.js 
+3. to launch a new campaign with a goal of 0.1 Uniswap tokens:      npx hardhat run --network goerli  scripts/launch.js 
 
-4. to pledge token amount to a new campaign with 0.1 Uni Tokens: npx hardhat run --network goerli  scripts/pledge.js
+4. to pledge token amount to a new campaign with 0.1 Uni Tokens:    npx hardhat run --network goerli  scripts/pledge.js
 
 
 # Verified Contract 
