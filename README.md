@@ -31,27 +31,28 @@ Ganache or another Ethereum client
 
 2. Install the dependencies:  run:  npm install
 
-yarn add --dev hardhat @nomiclabs/hardhat-ethers@npm:hardhat-deploy-ethers ethers
 
+# Verified Contract 
+
+https://goerli.etherscan.io/address/0xbba96da3000ece87c141f955d1d09a7a3f528dd6#cod
 
 
 # Deployment
 
 1. In the root directory of the project, the following command to compile. run:   yarn hardhat compile
 
-2. Deploy contract to goerli. ```node.js yarn hardhat deploy --network goerli 
+2. Deploy contract to goerli. To launch a new campaign with a goal of 0.1 Uniswap tokens. To pledge token amount to a new campaign with 0.1 Uni Tokens:
+ ```node.js 
+ 
+yarn add --dev hardhat @nomiclabs/hardhat-ethers@npm:hardhat-deploy-ethers ethers
+
+yarn hardhat deploy --network goerli 
+
+npx hardhat run --network goerli  scripts/launch.js
+
+npx hardhat run --network goerli  scripts/pledge.js
 
 
 
-3. to launch a new campaign with a goal of 0.1 Uniswap tokens:      
-
-
-
-4. to pledge token amount to a new campaign with 0.1 Uni Tokens:    npx hardhat run --network goerli  scripts/pledge.js
-
-
-# Verified Contract 
-
-https://goerli.etherscan.io/address/0xbba96da3000ece87c141f955d1d09a7a3f528dd6#code
 
 
