@@ -39,13 +39,12 @@ yarn add --dev hardhat @nomiclabs/hardhat-ethers@npm:hardhat-deploy-ethers ether
 
 1. In the root directory of the project, the following command to compile. run:   yarn hardhat compile
 
-2. Deploy contract to goerli. run: yarn hardhat deploy --network goerli 
+2. Deploy contract to goerli. ```node.js yarn hardhat deploy --network goerli 
 
 
 
 3. to launch a new campaign with a goal of 0.1 Uniswap tokens:      
-``node.js
-npx hardhat run --network goerli  scripts/launch.js 
+
 
 
 4. to pledge token amount to a new campaign with 0.1 Uni Tokens:    npx hardhat run --network goerli  scripts/pledge.js
