@@ -1,5 +1,5 @@
 # crowdFund
-A smart contract for a crowdfunding platform on Ethereum. 
+A smart contract for a crowdfunding using ERC20 tokens. 
 
 
 # Features
