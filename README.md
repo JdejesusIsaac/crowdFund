@@ -34,7 +34,7 @@ Ganache or another Ethereum client
 
 # Deployment
 
-1. In the root directory of the project, run the following command to compile. run:  yarn hardhat compile
+1. In the root directory of the project, the following command to compile. run:  yarn hardhat compile
 
 2. Deploy contract to goerli. run: yarn hardhat deploy --network goerli 
 
