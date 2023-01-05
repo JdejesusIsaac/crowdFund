@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/crowdFund.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.10;\n\ninterface IERC20 {\n    function transfer(address, uint) external returns (bool);\n\n    function transferFrom(address, address, uint) external returns (bool);\n}\n\ncontract CrowdFund01 {\n\n    IERC20 public immutable token;\n    // Total count of campaigns created.\n    // It is also used to generate id for new campaigns.\n    uint public count;\n    // Mapping from id to Campaign\n    mapping(uint => Campaign) public campaigns;\n    // Mapping from campaign id => pledger => amount pledged\n    mapping(uint => mapping(address => uint)) public pledgedAmount;\n    \n    \n    event Launch(\n        uint id,\n        address indexed creator,\n        uint goal\n        \n    );\n    event Cancel(uint id);\n    event Pledge(uint indexed id, address indexed caller, uint amount);\n    event Unpledge(uint indexed id, address indexed caller, uint amount);\n    event Claim(uint id);\n    event Refund(uint id, address indexed caller, uint amount);\n\n    struct Campaign {\n        // Creator of campaign\n        address creator;\n        // Amount of tokens to raise\n        uint goal;\n        // Total amount pledged\n        uint pledged;\n        // Timestamp of start of campaign\n       \n        // True if goal was reached and creator has claimed the tokens.\n        bool claimed;\n    }\n\n    \n\n    constructor(address _token) {\n        token = IERC20(_token);\n    }\n\n    function launch(uint _goal) external {\n        \n\n        count += 1;\n        campaigns[count] = Campaign({\n            creator: msg.sender,\n            goal: _goal,\n            pledged: 0,\n            \n            claimed: false\n        });\n\n        emit Launch(count, msg.sender, _goal);\n    }\n\n    function cancel(uint _id) external {\n        Campaign memory campaign = campaigns[_id];\n        require(campaign.creator == msg.sender, \"not creator\");\n        \n        delete campaigns[_id];\n        emit Cancel(_id);\n    }\n\n    function pledge(uint _id, uint _amount) external {\n        Campaign storage campaign = campaigns[_id];\n        \n\n        campaign.pledged += _amount;\n        pledgedAmount[_id][msg.sender] += _amount;\n        token.transferFrom(msg.sender, address(this), _amount);\n\n        emit Pledge(_id, msg.sender, _amount);\n    }\n\n    function unpledge(uint _id, uint _amount) external {\n        Campaign storage campaign = campaigns[_id];\n       \n\n        campaign.pledged -= _amount;\n        pledgedAmount[_id][msg.sender] -= _amount;\n        token.transfer(msg.sender, _amount);\n\n        emit Unpledge(_id, msg.sender, _amount);\n    }\n\n    function claim(uint _id) external {\n        Campaign storage campaign = campaigns[_id];\n        require(campaign.creator == msg.sender, \"not creator\");\n       \n        require(campaign.pledged >= campaign.goal, \"pledged < goal\");\n        require(!campaign.claimed, \"claimed\");\n\n        campaign.claimed = true;\n        token.transfer(campaign.creator, campaign.pledged);\n\n        emit Claim(_id);\n    }\n\n    function refund(uint _id) external {\n        Campaign memory campaign = campaigns[_id];\n        \n        require(campaign.pledged < campaign.goal, \"pledged >= goal\");\n\n        uint bal = pledgedAmount[_id][msg.sender];\n        pledgedAmount[_id][msg.sender] = 0;\n        token.transfer(msg.sender, bal);\n\n        emit Refund(_id, msg.sender, bal);\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
