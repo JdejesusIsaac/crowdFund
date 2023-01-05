@@ -4,7 +4,7 @@ A smart contract for a crowdfunding using ERC20 tokens.
 
 # Features
 
-Launch a new campaign by specifying a goal amount in tokens. Uniswap/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984
+Launch a new campaign by specifying a goal amount in tokens. Token Used : Uniswap/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984 goerli
 
 Pledge amounts of the specified token to a campaign.
 
